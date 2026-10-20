@@ -6,9 +6,13 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     Cat: first 15 years = 1 human year, next 9 = +1, then every 4 = +1
     Dog: first 15 years = 1 human year, next 9 = +1, then every 5 = +1
     """
-    if not isinstance(cat_age, (int, float)) or not isinstance(dog_age, (int, float)) or isinstance(cat_age,
-                                                                                                    bool) or isinstance(
-            dog_age, bool):
+    valid_types = (int, float)
+    if (
+            not isinstance(cat_age, valid_types)
+            or not isinstance(dog_age, valid_types)
+            or isinstance(cat_age, bool)
+            or isinstance(dog_age, bool)
+    ):
         raise TypeError("Ages must be numbers")
 
     if cat_age < 0 or dog_age < 0:

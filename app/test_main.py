@@ -27,7 +27,9 @@ from app.main import get_human_age
         "large_ages",
     ],
 )
-def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
+def test_get_human_age(
+    cat_age: int, dog_age: int, expected: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -39,7 +41,9 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
         (-15, -15),
     ],
 )
-def test_get_human_age_negative_raises_value_error(cat_age: int, dog_age: int) -> None:
+def test_get_human_age_negative_raises_value_error(
+    cat_age: int, dog_age: int
+) -> None:
     with pytest.raises(ValueError):
         get_human_age(cat_age, dog_age)
 
@@ -54,9 +58,11 @@ def test_get_human_age_negative_raises_value_error(cat_age: int, dog_age: int) -
         ([15], 15),
     ],
 )
-def test_get_human_age_invalid_type_raises_type_error(cat_age, dog_age) -> None:
+def test_get_human_age_invalid_type_raises_type_error(
+    cat_age: object, dog_age: object
+) -> None:
     with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)
+        get_human_age(cat_age, dog_age)  # type: ignore[arg-type]
 
 
 def test_get_human_age_returns_list() -> None:
